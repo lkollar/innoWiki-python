@@ -17,7 +17,8 @@ innoWiki.events.PageLoaded.add(function(){
 innoWiki.backend = {
 
 //TODO
-connection: new SharePointConnection(),
+//connection: new SharePointConnection(),
+connection: new ServerConnection(),
 
 refreshHandler: 0,
 
