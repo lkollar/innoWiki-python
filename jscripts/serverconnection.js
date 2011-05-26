@@ -49,7 +49,16 @@ function ServerConnection(){
 	// private
     // TODO
 	this.getItems =	function (listName, queryString, viewFields, rowLimit){
-				
+
+            $.getJSON(this.siteUrl+ "/_lists",
+                    {
+                        list_name:  listName,
+                        query:      queryString,
+                        fields:     viewFields,
+                        rows:       rowLimit
+                    }, function(data) {
+                    
+                    }
     }
 
     // TODO
