@@ -6,13 +6,19 @@ CREATE TABLE history(id integer primary key, title varchar, summary text, conten
 CREATE TABLE pages(id integer primary key, title varchar, summary text, content text, editor varchar, date text, historyid integer);
 """
 
+#class Page(object):
+    
+
 class SQLiteDataStore(object):
     
     def __init__(self):
         #TODO error handling
         self.connection = sqlite3.connect("innowiki.sqlite")
+        self.connection.row_factory = sqlite3.Row
         self.c = self.connection.cursor()
 
+    def getCursor(self):
+        return self.connection.cursor()
 
     def addActivePage(self, title, summary, content, editor, date, history_id):
         #TODO error handling
@@ -42,7 +48,7 @@ class SQLiteDataStore(object):
     def getLastHistoryId(self):
         self.c.execute("select * from history order by id desc")
         row = self.c.fetchone()
-        return row[0]
+        return row['id']
 
     def getHistoryPageListNewerThan(self, id):
         r = []
