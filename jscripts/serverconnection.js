@@ -4,6 +4,7 @@ function ServerConnection(){
 
     // TODO
 	this.getPageFromHistory = function (title){
+        $.getJSON(this.siteUrl + "/_getpagefromhistory" );
     }
 
     // TODO
